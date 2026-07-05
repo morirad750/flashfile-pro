@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlashFile Pro | فایل فلش حرفه‌ای | Firmware Files</title>
+<meta name="description" content="دانلود فایل فلش و رید گوشی‌های طرح آیفون - CM2 Read Files - Firmware iPhone Clone - پشتیبانی 24 ساعته">
+<meta name="keywords" content="فایل فلش آیفون طرح,CM2 read file,firmware iPhone clone,فلش گوشی چینی,read file,flash file,آیفون کپی">
+<meta name="author" content="FlashFile Pro">
+<meta property="og:title" content="FlashFile Pro - فایل فلش حرفه‌ای">
+<meta property="og:description" content="بزرگترین مرجع فایل فلش و رید گوشی‌های طرح">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{--primary:#00d4ff;--secondary:#ff006e;--accent:#8338ec;--dark:#0a0a0f;--darker:#050508;--card:#12121a;--text:#e0e0e0;--text-dim:#888;--gold:#ffd700;--success:#00ff88;--warning:#ffaa00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Vazirmatn',sans-serif;background:var(--darker);color:var(--text);overflow-x:hidden;direction:rtl}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
+#loader{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--darker);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease}
+#loader.hidden{opacity:0;pointer-events:none}
+.loader-phone{width:80px;height:160px;border:3px solid var(--primary);border-radius:20px;position:relative;animation:phonePulse 1.5s ease infinite}
+.loader-phone::before{content:'';position:absolute;top:10px;left:50%;transform:translateX(-50%);width:40px;height:4px;background:var(--primary);border-radius:2px}
+.loader-phone::after{content:'';position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:30px;height:30px;border:2px solid var(--primary);border-radius:50%}
+@keyframes phonePulse{0%,100%{box-shadow:0 0 20px var(--primary),0 0 40px var(--primary)}50%{box-shadow:0 0 40px var(--primary),0 0 80px var(--primary)}}
+.loader-text{margin-top:30px;font-family:'Orbitron',sans-serif;font-size:1.2rem;color:var(--primary);letter-spacing:4px;animation:textGlow 1.5s ease infinite}
+@keyframes textGlow{0%,100%{text-shadow:0 0 10px var(--primary)}50%{text-shadow:0 0 30px var(--primary),0 0 60px var(--primary)}}
+.loader-progress{width:200px;height:3px;background:#222;border-radius:3px;margin-top:20px;overflow:hidden}
+.loader-progress-bar{height:100%;width:0%;background:var(--primary);border-radius:3px;animation:progressLoad 2s ease forwards}
+@keyframes progressLoad{0%{width:0%}100%{width:100%}}
+nav{position:fixed;top:0;left:0;width:100%;padding:15px 40px;z-index:1000;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,212,255,.1);transition:all .3s ease}
+nav.scrolled{background:rgba(10,10,15,.95);box-shadow:0 5px 30px rgba(0,212,255,.1)}
+.nav-container{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:var(--primary);text-decoration:none;display:flex;align-items:center;gap:10px;text-shadow:0 0 20px rgba(0,212,255,.5)}
+.logo-icon{width:40px;height:40px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--dark)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{color:var(--text);text-decoration:none;font-size:.95rem;font-weight:500;position:relative;padding:5px 0;transition:color .3s ease}
+.nav-links a::after{content:'';position:absolute;bottom:0;right:0;width:0;height:2px;background:var(--primary);transition:width .3s ease}
+.nav-links a:hover{color:var(--primary)}
+.nav-links a:hover::after{width:100%}
+.lang-switcher{display:flex;gap:5px;background:var(--card);padding:5px;border-radius:10px}
+.lang-btn{padding:5px 12px;border:none;background:transparent;color:var(--text-dim);cursor:pointer;border-radius:6px;font-family:'Vazirmatn',sans-serif;font-size:.8rem;transition:all .3s ease}
+.lang-btn.active{background:var(--primary);color:var(--dark);font-weight:700}
+.lang-btn:hover:not(.active){color:var(--primary)}
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:80px}
+#particles-js{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}
+#three-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2}
+.hero-content{position:relative;z-index:10;text-align:center;max-width:900px;padding:0 20px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);border-radius:50px;font-size:.85rem;color:var(--primary);margin-bottom:30px;animation:badgeFloat 3s ease infinite}
+@keyframes badgeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.hero-title{font-family:'Orbitron',sans-serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:1.1;margin-bottom:20px}
+.hero-title .gradient-text{background:var(--primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 3s ease infinite}
+@keyframes gradientShift{0%,100%{filter:hue-rotate(0deg)}50%{filter:hue-rotate(30deg)}}
+.hero-subtitle{font-size:1.3rem;color:var(--text-dim);margin-bottom:40px;line-height:1.8}
+.hero-stats{display:flex;justify-content:center;gap:40px;margin-bottom:40px;flex-wrap:wrap}
+.stat-item{text-align:center}
+.stat-number{font-family:'Orbitron',sans-serif;font-size:2.5rem;font-weight:900;color:var(--primary);text-shadow:0 0 20px rgba(0,212,255,.3)}
+.stat-label{font-size:.85rem;color:var(--text-dim);margin-top:5px}
+.hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+.btn{padding:15px 40px;border-radius:12px;font-family:'Vazirmatn',sans-serif;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s ease;border:none}
+.btn-primary{background:var(--primary);color:var(--dark);box-shadow:0 0 30px rgba(0,212,255,.3)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(0,212,255,.5)}
+.btn-outline{background:transparent;color:var(--primary);border:2px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:var(--dark);transform:translateY(-3px)}
+#features{padding:100px 20px;position:relative}
+.section-header{text-align:center;margin-bottom:60px}
+.section-tag{display:inline-block;padding:5px 20px;background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.3);border-radius:50px;color:var(--primary);font-size:.85rem;margin-bottom:15px}
+.section-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:700;margin-bottom:15px}
+.section-desc{color:var(--text-dim);font-size:1.1rem;max-width:600px;margin:0 auto}
+.features-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+.feature-card{background:var(--card);border-radius:20px;padding:40px 30px;border:1px solid rgba(255,255,255,.05);transition:all .4s ease;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:var(--primary);opacity:0;transition:opacity .4s ease;z-index:0}
+.feature-card:hover::before{opacity:.03}
+.feature-card:hover{transform:translateY(-10px);border-color:rgba(0,212,255,.3);box-shadow:0 20px 60px rgba(0,212,255,.1)}
+.feature-icon{width:70px;height:70px;background:rgba(0,212,255,.1);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:25px;position:relative;z-index:1}
+.feature-title{font-size:1.3rem;font-weight:700;margin-bottom:12px;position:relative;z-index:1}
+.feature-desc{color:var(--text-dim);line-height:1.8;position:relative;z-index:1}
+#products{padding:100px 20px;background:var(--dark);position:relative}
+.products-grid{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px}
+.product-card{background:var(--card);border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,.05);transition:all .4s ease}
+.product-card:hover{transform:translateY(-10px) scale(1.02);border-color:rgba(0,212,255,.3);box-shadow:0 30px 80px rgba(0,212,255,.15)}
+.product-image{height:220px;background:var(--dark);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-image::before{content:'';position:absolute;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,var(--primary),transparent);animation:rotate 4s linear infinite}
+@keyframes rotate{100%{transform:rotate(360deg)}}
+.product-image-inner{position:relative;z-index:1;width:calc(100% - 4px);height:calc(100% - 4px);background:var(--dark);border-radius:24px 24px 0 0;display:flex;align-items:center;justify-content:center;font-size:4rem}
+.product-badge{position:absolute;top:15px;right:15px;padding:5px 15px;border-radius:50px;font-size:.75rem;font-weight:700;z-index:2}
+.badge-hot{background:var(--secondary);color:white}
+.badge-new{background:var(--success);color:var(--dark)}
+.badge-sale{background:var(--warning);color:var(--dark)}
+.product-info{padding:25px}
+.product-category{color:var(--primary);font-size:.8rem;font-weight:600;margin-bottom:8px}
+.product-name{font-size:1.2rem;font-weight:700;margin-bottom:10px}
+.product-specs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:15px}
+.spec-tag{padding:4px 12px;background:rgba(255,255,255,.05);border-radius:6px;font-size:.75rem;color:var(--text-dim)}
+.product-footer{display:flex;align-items:center;justify-content:space-between;padding-top:15px;border-top:1px solid rgba(255,255,255,.05)}
+.product-price{display:flex;flex-direction:column}
+.price-old{font-size:.85rem;color:var(--text-dim);text-decoration:line-through}
+.price-new{font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:900;color:var(--success)}
+.btn-buy{padding:10px 25px;background:var(--primary);color:var(--dark);border:none;border-radius:10px;font-family:'Vazirmatn',sans-serif;font-weight:700;cursor:pointer;transition:all .3s ease}
+.btn-buy:hover{transform:scale(1.05);box-shadow:0 5px 25px rgba(0,212,255,.4)}
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--card);border-radius:24px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;border:1px solid rgba(0,212,255,.2);box-shadow:0 30px 100px rgba(0,0,0,.5);animation:modalIn .4s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.9) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.modal-header{padding:30px 30px 0;display:flex;justify-content:space-between;align-items:center}
+.modal-title{font-size:1.3rem;font-weight:700}
+.modal-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.05);border:none;color:var(--text);cursor:pointer;font-size:1.2rem;transition:all .3s ease}
+.modal-close:hover{background:var(--secondary);color:white}
+.modal-body{padding:25px 30px 30px}
+.payment-product{display:flex;gap:15px;align-items:center;padding:15px;background:rgba(255,255,255,.03);border-radius:16px;margin-bottom:25px}
+.payment-product-icon{width:50px;height:50px;background:rgba(0,212,255,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem}
+.payment-product-info{flex:1}
+.payment-product-name{font-weight:700;margin-bottom:3px}
+.payment-product-price{color:var(--success);font-weight:700}
+.payment-options{display:flex;flex-direction:column;gap:12px;margin-bottom:25px}
+.payment-option{display:flex;align-items:center;gap:15px;padding:18px 20px;background:rgba(255,255,255,.03);border:2px solid transparent;border-radius:16px;cursor:pointer;transition:all .3s ease}
+.payment-option:hover{border-color:rgba(0,212,255,.3)}
+.payment-option.selected{border-color:var(--primary);background:rgba(0,212,255,.05)}
+.payment-option-icon{width:45px;height:45px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.payment-option-info{flex:1}
+.payment-option-name{font-weight:700;margin-bottom:3px}
+.payment-option-desc{font-size:.8rem;color:var(--text-dim)}
+.payment-option-radio{width:22px;height:22px;border:2px solid var(--text-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s ease}
+.payment-option.selected .payment-option-radio{border-color:var(--primary);background:var(--primary)}
+.payment-option.selected .payment-option-radio::after{content:'✓';color:var(--dark);font-size:.8rem;font-weight:900}
+.qr-section{text-align:center;padding:20px;background:rgba(255,255,255,.03);border-radius:16px;margin-bottom:20px;display:none}
+.qr-section.active{display:block}
+#qrcode{margin:15px auto}
+.wallet-address{display:flex;align-items:center;gap:10px;padding:12px;background:var(--dark);border-radius:10px;margin-top:15px}
+.wallet-address-text{flex:1;font-family:monospace;font-size:.8rem;color:var(--text-dim);overflow:hidden;text-overflow:ellipsis}
+.btn-copy{padding:8px 15px;background:var(--primary);color:var(--dark);border:none;border-radius:8px;font-family:'Vazirmatn',sans-serif;font-weight:700;cursor:pointer;font-size:.8rem;transition:all .3s ease}
+.btn-copy:hover{transform:scale(1.05)}
+.btn-copy.copied{background:var(--success)}
+.payment-note{font-size:.8rem;color:var(--text-dim);text-align:center;margin-bottom:20px;padding:12px;background:rgba(255,170,0,.05);border-radius:10px;border:1px solid rgba(255,170,0,.2)}
+.btn-confirm{width:100%;padding:16px;background:var(--primary);color:var(--dark);border:none;border-radius:14px;font-family:'Vazirmatn',sans-serif;font-size:1.1rem;font-weight:700;cursor:pointer;transition:all .3s ease}
+.btn-confirm:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,212,255,.3)}
+.btn-confirm:disabled{opacity:.5;cursor:not-allowed;transform:none}
+#telegram{padding:100px 20px;background:var(--dark);position:relative}
+.telegram-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.telegram-title{font-family:'Orbitron',sans-serif;font-size:2.5rem;font-weight:700;margin-bottom:20px}
+.telegram-desc{color:var(--text-dim);font-size:1.1rem;line-height:1.8;margin-bottom:30px}
+.telegram-features{display:flex;flex-direction:column;gap:15px;margin-bottom:30px}
+.telegram-feature{display:flex;align-items:center;gap:12px}
+.telegram-feature-icon{width:40px;height:40px;border-radius:10px;background:rgba(0,212,255,.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.telegram-feature-text{font-weight:500}
+.telegram-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 35px;background:#0088cc;color:white;text-decoration:none;border-radius:14px;font-weight:700;transition:all .3s ease}
+.telegram-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,136,204,.4)}
+.telegram-phone{position:relative;display:flex;justify-content:center;align-items:center}
+.phone-mockup{width:280px;height:560px;background:var(--card);border-radius:40px;border:3px solid rgba(255,255,255,.1);padding:15px;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.phone-screen{width:100%;height:100%;background:var(--dark);border-radius:30px;overflow:hidden;display:flex;flex-direction:column}
+.phone-header{padding:15px;background:#0088cc;display:flex;align-items:center;gap:10px}
+.phone-avatar{width:35px;height:35px;border-radius:50%;background:white;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.phone-bot-name{font-weight:700;font-size:.9rem}
+.phone-chat{flex:1;padding:15px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+.chat-message{max-width:80%;padding:10px 14px;border-radius:14px;font-size:.8rem;animation:messageIn .5s ease}
+@keyframes messageIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.chat-bot{background:rgba(0,136,204,.15);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-user{background:rgba(0,212,255,.15);align-self:flex-end;border-bottom-right-radius:4px}
+.phone-input{padding:12px 15px;background:rgba(255,255,255,.05);display:flex;gap:10px;align-items:center}
+.phone-input-field{flex:1;background:rgba(255,255,255,.1);border:none;border-radius:20px;padding:8px 15px;color:var(--text);font-family:'Vazirmatn',sans-serif;font-size:.8rem}
+.phone-send{width:35px;height:35px;border-radius:50%;background:#0088cc;border:none;color:white;cursor:pointer;display:flex;align-items:center;justify-content:center}
+#how-it-works{padding:100px 20px;position:relative}
+.steps-container{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
+.step-card{text-align:center;padding:40px 20px;position:relative}
+.step-card::after{content:'';position:absolute;top:60px;left:-15px;width:30px;height:2px;background:var(--primary);opacity:.3}
+.step-card:first-child::after{display:none}
+.step-number{width:80px;height:80px;background:rgba(0,212,255,.1);border:2px solid var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-size:1.8rem;font-weight:900;color:var(--primary);margin:0 auto 25px;box-shadow:0 0 30px rgba(0,212,255,.2)}
+.step-title{font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.step-desc{color:var(--text-dim);font-size:.9rem;line-height:1.7}
+#seo-content{padding:80px 20px;background:var(--dark)}
+.seo-container{max-width:1000px;margin:0 auto}
+.seo-block{margin-bottom:40px}
+.seo-title{font-size:1.5rem;font-weight:700;margin-bottom:15px;color:var(--primary)}
+.seo-text{color:var(--text-dim);line-height:2;font-size:.95rem}
+.seo-keywords{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.seo-keyword{padding:8px 16px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);border-radius:50px;font-size:.8rem;color:var(--primary)}
+footer{background:var(--darker);padding:60px 20px 30px;border-top:1px solid rgba(255,255,255,.05)}
+.footer-container{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand .logo{margin-bottom:15px}
+.footer-desc{color:var(--text-dim);line-height:1.8;font-size:.9rem}
+.footer-title{font-size:1.1rem;font-weight:700;margin-bottom:20px;color:var(--primary)}
+.footer-links{display:flex;flex-direction:column;gap:12px}
+.footer-links a{color:var(--text-dim);text-decoration:none;font-size:.9rem;transition:color .3s ease}
+.footer-links a:hover{color:var(--primary)}
+.footer-bottom{text-align:center;padding-top:30px;border-top:1px solid rgba(255,255,255,.05);color:var(--text-dim);font-size:.85rem}
+.fade-in{opacity:0;transform:translateY(30px);transition:all .8s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--card);color:var(--text);padding:15px 30px;border-radius:14px;border:1px solid rgba(0,212,255,.3);box-shadow:0 10px 40px rgba(0,0,0,.5);z-index:3000;opacity:0;transition:all .4s ease;display:flex;align-items:center;gap:10px}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast-icon{font-size:1.2rem}
+.toast.success{border-color:var(--success)}
+.toast.success .toast-icon{color:var(--success)}
+.toast.error{border-color:var(--secondary)}
+.toast.error .toast-icon{color:var(--secondary)}
+@media(max-width:1024px){.telegram-container{grid-template-columns:1fr}.steps-container{grid-template-columns:repeat(2,1fr)}.step-card::after{display:none}.footer-container{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links{display:none}.hero-stats{gap:20px}.stat-number{font-size:1.8rem}.steps-container{grid-template-columns:1fr}.footer-container{grid-template-columns:1fr}.products-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="loader"><div class="loader-phone"></div><div class="loader-text">FLASHFILE PRO</div><div class="loader-progress"><div class="loader-progress-bar"></div></div></div>
+<div class="toast" id="toast"><span class="toast-icon">✓</span><span class="toast-message">پیام</span></div>
+<nav id="navbar"><div class="nav-container"><a href="#" class="logo"><div class="logo-icon">⚡</div>FLASHFILE PRO</a><div class="nav-links"><a href="#hero" data-lang="home">صفحه اصلی</a><a href="#products" data-lang="products">فایل‌ها</a><a href="#how-it-works" data-lang="how">نحوه خرید</a><a href="#telegram" data-lang="support">پشتیبانی</a><div class="lang-switcher"><button class="lang-btn active" data-lang="fa">FA</button><button class="lang-btn" data-lang="en">EN</button><button class="lang-btn" data-lang="ar">AR</button></div></div></div></nav>
+<section id="hero"><div id="particles-js"></div><canvas id="three-canvas"></canvas><div class="hero-content"><div class="hero-badge"><span>🔥</span><span data-lang="badge">بیش از ۵۰۰۰ فایل فلش فعال</span></div><h1 class="hero-title"><span data-lang="hero-title-1">فایل فلش</span><span class="gradient-text" data-lang="hero-title-2">حرفه‌ای</span></h1><p class="hero-subtitle" data-lang="hero-subtitle">بزرگترین مرجع فایل‌های رید و فلش گوشی‌های طرح آیفون و چینی<br>با پشتیبانی CM2 و پرداخت خودکار کریپتو</p><div class="hero-stats"><div class="stat-item"><div class="stat-number" id="stat-files">0</div><div class="stat-label" data-lang="stat-files">فایل فعال</div></div><div class="stat-item"><div class="stat-number" id="stat-users">0</div><div class="stat-label" data-lang="stat-users">مشتری راضی</div></div><div class="stat-item"><div class="stat-number" id="stat-success">0</div><div class="stat-label" data-lang="stat-success">%موفقیت</div></div></div><div class="hero-buttons"><a href="#products" class="btn btn-primary"><span>🛒</span><span data-lang="btn-buy">مشاهده فایل‌ها</span></a><a href="#telegram" class="btn btn-outline"><span>💬</span><span data-lang="btn-support">پشتیبانی تلگرام</span></a></div></div></section>
+<section id="features"><div class="section-header fade-in"><div class="section-tag" data-lang="features-tag">چرا ما؟</div><h2 class="section-title" data-lang="features-title">امکانات منحصربه‌فرد</h2><p class="section-desc" data-lang="features-desc">تمام آنچه برای تعمیرات حرفه‌ای نیاز دارید در یکجا</p></div><div class="features-grid"><div class="feature-card fade-in"><div class="feature-icon">📁</div><h3 class="feature-title" data-lang="feat-1-title">فایل‌های CM2 Read</h3><p class="feature-desc" data-lang="feat-1-desc">تمام فایل‌های رید شده با Infinity CM2 با تست ۱۰۰٪ و بدون مشکل بوت</p></div><div class="feature-card fade-in"><div class="feature-icon">⚡</div><h3 class="feature-title" data-lang="feat-2-title">دانلود فوری</h3><p class="feature-desc" data-lang="feat-2-desc">بلافاصله بعد از تأیید پرداخت، لینک دانلود به صورت خودکار ارسال می‌شود</p></div><div class="feature-card fade-in"><div class="feature-icon">🔒</div><h3 class="feature-title" data-lang="feat-3-title">پرداخت امن کریپتو</h3><p class="feature-desc" data-lang="feat-3-desc">پرداخت با USDT در شبکه‌های BEP20 و TRC20 با تأیید خودکار تراکنش</p></div><div class="feature-card fade-in"><div class="feature-icon">🤖</div><h3 class="feature-title" data-lang="feat-4-title">ربات تلگرام هوشمند</h3><p class="feature-desc" data-lang="feat-4-desc">پشتیبانی ۲۴ ساعته با ربات تلگرام برای پاسخگویی خودکار و ارسال فایل</p></div><div class="feature-card fade-in"><div class="feature-icon">🌍</div><h3 class="feature-title" data-lang="feat-5-title">سه زبانه</h3><p class="feature-desc" data-lang="feat-5-desc">پشتیبانی از زبان فارسی، انگلیسی و عربی برای مشتریان بین‌المللی</p></div><div class="feature-card fade-in"><div class="feature-icon">📱</div><h3 class="feature-title" data-lang="feat-6-title">طرح iPhone کپی</h3><p class="feature-desc" data-lang="feat-6-desc">تخصص در فایل‌های فلش و ریکاوری گوشی‌های طرح آیفون و برندهای چینی</p></div></div></section>
+<section id="products"><div class="section-header fade-in"><div class="section-tag" data-lang="products-tag">فروشگاه</div><h2 class="section-title" data-lang="products-title">فایل‌های موجود</h2><p class="section-desc" data-lang="products-desc">انتخاب کنید، پرداخت کنید، بلافاصله دانلود کنید</p></div><div class="products-grid" id="products-grid"></div></section>
+<section id="how-it-works"><div class="section-header fade-in"><div class="section-tag" data-lang="steps-tag">راهنما</div><h2 class="section-title" data-lang="steps-title">نحوه خرید</h2><p class="section-desc" data-lang="steps-desc">چهار مرحله ساده تا دریافت فایل</p></div><div class="steps-container"><div class="step-card fade-in"><div class="step-number">01</div><h3 class="step-title" data-lang="step-1-title">انتخاب فایل</h3><p class="step-desc" data-lang="step-1-desc">از بین صدها فایل فلش، مدل دقیق گوشی خود را پیدا کنید</p></div><div class="step-card fade-in"><div class="step-number">02</div><h3 class="step-title" data-lang="step-2-title">پرداخت کریپتو</h3><p class="step-desc" data-lang="step-2-desc">با USDT در شبکه BEP20 یا TRC20 پرداخت کنید</p></div><div class="step-card fade-in"><div class="step-number">03</div><h3 class="step-title" data-lang="step-3-title">تأیید خودکار</h3><p class="step-desc" data-lang="step-3-desc">سیستم به صورت خودکار تراکنش شما را تأیید می‌کند</p></div><div class="step-card fade-in"><div class="step-number">04</div><h3 class="step-title" data-lang="step-4-title">دانلود فوری</h3><p class="step-desc" data-lang="step-4-desc">لینک دانلود مستقیم و راهنمای نصب را دریافت کنید</p></div></div></section>
+<section id="telegram"><div class="telegram-container"><div class="telegram-info fade-in"><h2 class="telegram-title" data-lang="telegram-title">ربات تلگرام هوشمند</h2><p class="telegram-desc" data-lang="telegram-desc">با ربات تلگرام ما، خرید و دانلود فایل‌ها را به ساده‌ترین شکل ممکن تجربه کنید. پشتیبانی ۲۴ ساعته، پاسخگویی خودکار و ارسال لینک دانلود مستقیم.</p><div class="telegram-features"><div class="telegram-feature"><div class="telegram-feature-icon">🤖</div><span class="telegram-feature-text" data-lang="tg-feat-1">پاسخگویی خودکار به سوالات رایج</span></div><div class="telegram-feature"><div class="telegram-feature-icon">📥</div><span class="telegram-feature-text" data-lang="tg-feat-2">ارسال خودکار لینک دانلود بعد از پرداخت</span></div><div class="telegram-feature"><div class="telegram-feature-icon">🔍</div><span class="telegram-feature-text" data-lang="tg-feat-3">جستجوی فایل بر اساس مدل CPU</span></div><div class="telegram-feature"><div class="telegram-feature-icon">💬</div><span class="telegram-feature-text" data-lang="tg-feat-4">ارتباط مستقیم با پشتیبان انسانی</span></div></div><a href="https://t.me/FlashFileProBot" target="_blank" class="telegram-btn"><span>✈️</span><span data-lang="tg-btn">شروع چت با ربات</span></a></div><div class="telegram-phone fade-in"><div class="phone-mockup"><div class="phone-screen"><div class="phone-header"><div class="phone-avatar">🤖</div><span class="phone-bot-name">FlashFile Bot</span></div><div class="phone-chat" id="chat-messages"><div class="chat-message chat-bot">سلام! 👋 به ربات FlashFile Pro خوش آمدید</div><div class="chat-message chat-bot">مدل گوشی خود را وارد کنید تا فایل مناسب را پیدا کنم</div><div class="chat-message chat-user">iPhone 14 Pro Max clone MT6580</div><div class="chat-message chat-bot">✅ فایل پیدا شد!<br><br>📱 iPhone 14 Pro Max (MT6580)<br>💾 حجم: 2.4GB<br>💰 قیمت: 15 USDT<br><br>برای خرید روی دکمه زیر کلیک کنید 👇</div></div><div class="phone-input"><input type="text" class="phone-input-field" placeholder="پیام خود را بنویسید..." readonly><button class="phone-send">➤</button></div></div></div></div></div></section>
+<section id="seo-content"><div class="seo-container"><div class="seo-block fade-in"><h3 class="seo-title" data-lang="seo-1-title">فایل فلش آیفون طرح - CM2 Read File</h3><p class="seo-text" data-lang="seo-1-text">بهترین مرجع دانلود فایل‌های فلش و رید گوشی‌های طرح آیفون و چینی. تمام فایل‌ها با Infinity CM2 رید شده و تست شده هستند. پشتیبانی از پرداخت USDT BEP20 و TRC20. دانلود فوری بعد از تأیید پرداخت. فایل‌های فلش MT6580، MT6739، MT6761، MT6765 و سایر پردازنده‌های مدیاتک.</p><div class="seo-keywords"><span class="seo-keyword">فایل فلش آیفون طرح</span><span class="seo-keyword">CM2 read file</span><span class="seo-keyword">firmware iPhone clone</span><span class="seo-keyword">flash file MT6580</span><span class="seo-keyword">رید فایل گوشی چینی</span><span class="seo-keyword">فلش گوشی طرح</span><span class="seo-keyword">download firmware clone</span><span class="seo-keyword">فایل فلش مدیاتک</span></div></div><div class="seo-block fade-in"><h3 class="seo-title" data-lang="seo-2-title">نحوه فلش زدن گوشی طرح آیفون</h3><p class="seo-text" data-lang="seo-2-text">آموزش کامل فلش زدن گوشی‌های طرح آیفون با CM2. ابتدا فایل رید شده مناسب مدل CPU خود را خریداری کنید. سپس با استفاده از Infinity CM2 یا SP Flash Tool فایل را روی دستگاه فلش کنید. تمام فایل‌ها شامل scatter file، preloader و فایل‌های سیستمی کامل هستند. پشتیبانی ۲۴ ساعته از طریق ربات تلگرام.</p></div></div></section>
+<footer><div class="footer-container"><div class="footer-brand"><a href="#" class="logo"><div class="logo-icon">⚡</div>FLASHFILE PRO</a><p class="footer-desc" data-lang="footer-desc">بزرگترین مرجع فایل‌های فلش و ریکاوری گوشی‌های طرح آیفون و چینی. با افتخار از سال ۲۰۲۰ در خدمت تعمیرکاران حرفه‌ای.</p></div><div class="footer-col"><h4 class="footer-title" data-lang="footer-links">لینک‌های سریع</h4><div class="footer-links"><a href="#products" data-lang="footer-files">فایل‌ها</a><a href="#how-it-works" data-lang="footer-how">نحوه خرید</a><a href="#telegram" data-lang="footer-support">پشتیبانی</a></div></div><div class="footer-col"><h4 class="footer-title" data-lang="footer-payment">پرداخت</h4><div class="footer-links"><a href="#">USDT BEP20</a><a href="#">USDT TRC20</a><a href="#" data-lang="footer-crypto">راهنمای کریپتو</a></div></div><div class="footer-col"><h4 class="footer-title" data-lang="footer-contact">تماس</h4><div class="footer-links"><a href="https://t.me/FlashFileProBot" target="_blank">Telegram Bot</a><a href="https://t.me/FlashFileProSupport" target="_blank">Telegram Support</a><a href="mailto:support@flashfile.pro">support@flashfile.pro</a></div></div></div><div class="footer-bottom"><p>© 2026 FlashFile Pro. All rights reserved.</p></div></footer>
+<div class="modal-overlay" id="payment-modal"><div class="modal"><div class="modal-header"><h3 class="modal-title" data-lang="modal-title">پرداخت</h3><button class="modal-close" onclick="closeModal()">×</button></div><div class="modal-body"><div class="payment-product" id="payment-product"><div class="payment-product-icon">📱</div><div class="payment-product-info"><div class="payment-product-name" id="modal-product-name">--</div><div class="payment-product-price" id="modal-product-price">--</div></div></div><div class="payment-options"><div class="payment-option" onclick="selectPayment('bep20')"><div class="payment-option-icon" style="background:rgba(243,186,47,.1)">🟡</div><div class="payment-option-info"><div class="payment-option-name">USDT BEP20</div><div class="payment-option-desc">Binance Smart Chain - کارمزد کم</div></div><div class="payment-option-radio"></div></div><div class="payment-option" onclick="selectPayment('trc20')"><div class="payment-option-icon" style="background:rgba(255,0,110,.1)">🔴</div><div class="payment-option-info"><div class="payment-option-name">USDT TRC20</div><div class="payment-option-desc">Tron Network - سرعت بالا</div></div><div class="payment-option-radio"></div></div></div><div class="qr-section" id="qr-bep20"><p style="margin-bottom:10px;font-weight:600">USDT BEP20</p><div id="qrcode-bep20"></div><div class="wallet-address"><span class="wallet-address-text" id="wallet-bep20">0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb0</span><button class="btn-copy" onclick="copyAddress('wallet-bep20',this)">کپی</button></div></div><div class="qr-section" id="qr-trc20"><p style="margin-bottom:10px;font-weight:600">USDT TRC20</p><div id="qrcode-trc20"></div><div class="wallet-address"><span class="wallet-address-text" id="wallet-trc20">TJpP7P7mJ5Qf7mJ5Qf7mJ5Qf7mJ5Qf7mJ5Qf</span><button class="btn-copy" onclick="copyAddress('wallet-trc20',this)">کپی</button></div></div><div class="payment-note" data-lang="payment-note">⚠️ بعد از ارسال وجه، تراکنش ID (TXID) را از طریق ربات تلگرام ارسال کنید</div><button class="btn-confirm" id="btn-confirm" onclick="confirmPayment()" data-lang="btn-confirm" disabled>تأیید پرداخت</button></div></div></div>
+<script>
+const products=[
+{id:1,name:'iPhone 14 Pro Max Clone',cpu:'MT6580',ram:'2GB',rom:'16GB',size:'2.4GB',price:15,oldPrice:25,badge:'hot',badgeText:'پرفروش',icon:'📱',category:'iPhone Clone'},
+{id:2,name:'iPhone 13 Pro Clone',cpu:'MT6739',ram:'3GB',rom:'32GB',size:'3.1GB',price:18,oldPrice:30,badge:'sale',badgeText:'تخفیف',icon:'📱',category:'iPhone Clone'},
+{id:3,name:'iPhone 12 Pro Max Clone',cpu:'MT6761',ram:'4GB',rom:'64GB',size:'4.2GB',price:22,oldPrice:35,badge:'new',badgeText:'جدید',icon:'📱',category:'iPhone Clone'},
+{id:4,name:'iPhone 11 Pro Clone',cpu:'MT6765',ram:'4GB',rom:'64GB',size:'3.8GB',price:20,oldPrice:32,badge:'hot',badgeText:'پرفروش',icon:'📱',category:'iPhone Clone'},
+{id:5,name:'iPhone X Clone',cpu:'MT6580',ram:'2GB',rom:'16GB',size:'1.9GB',price:12,oldPrice:20,badge:'sale',badgeText:'تخفیف',icon:'📱',category:'iPhone Clone'},
+{id:6,name:'iPhone 15 Pro Max Clone',cpu:'MT6765',ram:'6GB',rom:'128GB',size:'5.1GB',price:28,oldPrice:45,badge:'new',badgeText:'جدید',icon:'📱',category:'iPhone Clone'}
+];
+
+const translations={
+fa:{
+home:'صفحه اصلی',products:'فایل‌ها',how:'نحوه خرید',support:'پشتیبانی',
+badge:'بیش از ۵۰۰۰ فایل فلش فعال','hero-title-1':'فایل فلش','hero-title-2':'حرفه‌ای',
+'hero-subtitle':'بزرگترین مرجع فایل‌های رید و فلش گوشی‌های طرح آیفون و چینی
+با پشتیبانی CM2 و پرداخت خودکار کریپتو',
+'stat-files':'فایل فعال','stat-users':'مشتری راضی','stat-success':'%موفقیت',
+'btn-buy':'مشاهده فایل‌ها','btn-support':'پشتیبانی تلگرام',
+'features-tag':'چرا ما؟','features-title':'امکانات منحصربه‌فرد','features-desc':'تمام آنچه برای تعمیرات حرفه‌ای نیاز دارید در یکجا',
+'feat-1-title':'فایل‌های CM2 Read','feat-1-desc':'تمام فایل‌های رید شده با Infinity CM2 با تست ۱۰۰٪ و بدون مشکل بوت',
+'feat-2-title':'دانلود فوری','feat-2-desc':'بلافاصله بعد از تأیید پرداخت، لینک دانلود به صورت خودکار ارسال می‌شود',
+'feat-3-title':'پرداخت امن کریپتو','feat-3-desc':'پرداخت با USDT در شبکه‌های BEP20 و TRC20 با تأیید خودکار تراکنش',
+'feat-4-title':'ربات تلگرام هوشمند','feat-4-desc':'پشتیبانی ۲۴ ساعته با ربات تلگرام برای پاسخگویی خودکار و ارسال فایل',
+'feat-5-title':'سه زبانه','feat-5-desc':'پشتیبانی از زبان فارسی، انگلیسی و عربی برای مشتریان بین‌المللی',
+'feat-6-title':'طرح iPhone کپی','feat-6-desc':'تخصص در فایل‌های فلش و ریکاوری گوشی‌های طرح آیفون و برندهای چینی',
+'products-tag':'فروشگاه','products-title':'فایل‌های موجود','products-desc':'انتخاب کنید، پرداخت کنید، بلافاصله دانلود کنید',
+'steps-tag':'راهنما','steps-title':'نحوه خرید','steps-desc':'چهار مرحله ساده تا دریافت فایل',
+'step-1-title':'انتخاب فایل','step-1-desc':'از بین صدها فایل فلش، مدل دقیق گوشی خود را پیدا کنید',
+'step-2-title':'پرداخت کریپتو','step-2-desc':'با USDT در شبکه BEP20 یا TRC20 پرداخت کنید',
+'step-3-title':'تأیید خودکار','step-3-desc':'سیستم به صورت خودکار تراکنش شما را تأیید می‌کند',
+'step-4-title':'دانلود فوری','step-4-desc':'لینک دانلود مستقیم و راهنمای نصب را دریافت کنید',
+'telegram-title':'ربات تلگرام هوشمند',
+'telegram-desc':'با ربات تلگرام ما، خرید و دانلود فایل‌ها را به ساده‌ترین شکل ممکن تجربه کنید. پشتیبانی ۲۴ ساعته، پاسخگویی خودکار و ارسال لینک دانلود مستقیم.',
+'tg-feat-1':'پاسخگویی خودکار به سوالات رایج','tg-feat-2':'ارسال خودکار لینک دانلود بعد از پرداخت','tg-feat-3':'جستجوی فایل بر اساس مدل CPU','tg-feat-4':'ارتباط مستقیم با پشتیبان انسانی',
+'tg-btn':'شروع چت با ربات',
+'seo-1-title':'فایل فلش آیفون طرح - CM2 Read File',
+'seo-1-text':'بهترین مرجع دانلود فایل‌های فلش و رید گوشی‌های طرح آیفون و چینی. تمام فایل‌ها با Infinity CM2 رید شده و تست شده هستند. پشتیبانی از پرداخت USDT BEP20 و TRC20. دانلود فوری بعد از تأیید پرداخت. فایل‌های فلش MT6580، MT6739، MT6761، MT6765 و سایر پردازنده‌های مدیاتک.',
+'seo-2-title':'نحوه فلش زدن گوشی طرح آیفون',
+'seo-2-text':'آموزش کامل فلش زدن گوشی‌های طرح آیفون با CM2. ابتدا فایل رید شده مناسب مدل CPU خود را خریداری کنید. سپس با استفاده از Infinity CM2 یا SP Flash Tool فایل را روی دستگاه فلش کنید. تمام فایل‌ها شامل scatter file، preloader و فایل‌های سیستمی کامل هستند. پشتیبانی ۲۴ ساعته از طریق ربات تلگرام.',
+'footer-desc':'بزرگترین مرجع فایل‌های فلش و ریکاوری گوشی‌های طرح آیفون و چینی. با افتخار از سال ۲۰۲۰ در خدمت تعمیرکاران حرفه‌ای.',
+'footer-links':'لینک‌های سریع','footer-files':'فایل‌ها','footer-how':'نحوه خرید','footer-support':'پشتیبانی',
+'footer-payment':'پرداخت','footer-crypto':'راهنمای کریپتو','footer-contact':'تماس',
+'modal-title':'پرداخت','payment-note':'⚠️ بعد از ارسال وجه، تراکنش ID (TXID) را از طریق ربات تلگرام ارسال کنید','btn-confirm':'تأیید پرداخت'
+},
+en:{
+home:'Home',products:'Files',how:'How to Buy',support:'Support',
+badge:'Over 5000 Active Flash Files','hero-title-1':'Professional','hero-title-2':'Flash Files',
+'hero-subtitle':'The largest source for read and flash files of iPhone clone and Chinese phones
+With CM2 support and automatic crypto payment',
+'stat-files':'Active Files','stat-users':'Happy Customers','stat-success':'Success %',
+'btn-buy':'View Files','btn-support':'Telegram Support',
+'features-tag':'Why Us?','features-title':'Unique Features','features-desc':'Everything you need for professional repairs in one place',
+'feat-1-title':'CM2 Read Files','feat-1-desc':'All files read with Infinity CM2 with 100% test and no boot issues',
+'feat-2-title':'Instant Download','feat-2-desc':'Download link sent automatically immediately after payment confirmation',
+'feat-3-title':'Secure Crypto Payment','feat-3-desc':'Pay with USDT on BEP20 and TRC20 networks with automatic transaction verification',
+'feat-4-title':'Smart Telegram Bot','feat-4-desc':'24/7 support with Telegram bot for auto-reply and file delivery',
+'feat-5-title':'Trilingual','feat-5-desc':'Support for Persian, English and Arabic for international customers',
+'feat-6-title':'iPhone Clone','feat-6-desc':'Specialized in flash and recovery files for iPhone clone and Chinese brands',
+'products-tag':'Store','products-title':'Available Files','products-desc':'Choose, pay, download instantly',
+'steps-tag':'Guide','steps-title':'How to Buy','steps-desc':'Four simple steps to get your file',
+'step-1-title':'Select File','step-1-desc':'Find the exact model of your phone from hundreds of flash files',
+'step-2-title':'Crypto Payment','step-2-desc':'Pay with USDT on BEP20 or TRC20 network',
+'step-3-title':'Auto Verification','step-3-desc':'System automatically verifies your transaction',
+'step-4-title':'Instant Download','step-4-desc':'Receive direct download link and installation guide',
+'telegram-title':'Smart Telegram Bot',
+'telegram-desc':'Experience the easiest way to buy and download files with our Telegram bot. 24/7 support, auto-reply and direct download link delivery.',
+'tg-feat-1':'Auto-reply to common questions','tg-feat-2':'Auto download link after payment','tg-feat-3':'Search files by CPU model','tg-feat-4':'Direct human support connection',
+'tg-btn':'Start Chat with Bot',
+'seo-1-title':'iPhone Clone Flash File - CM2 Read File',
+'seo-1-text':'Best source for flash and read files of iPhone clone and Chinese phones. All files read and tested with Infinity CM2. Support for USDT BEP20 and TRC20 payment. Instant download after payment confirmation. Flash files for MT6580, MT6739, MT6761, MT6765 and other MediaTek processors.',
+'seo-2-title':'How to Flash iPhone Clone Phone',
+'seo-2-text':'Complete guide to flashing iPhone clone phones with CM2. First purchase the appropriate read file for your CPU model. Then flash the file using Infinity CM2 or SP Flash Tool. All files include scatter file, preloader and complete system files. 24/7 support via Telegram bot.',
+'footer-desc':'The largest source for flash and recovery files of iPhone clone and Chinese phones. Proudly serving professional repair technicians since 2020.',
+'footer-links':'Quick Links','footer-files':'Files','footer-how':'How to Buy','footer-support':'Support',
+'footer-payment':'Payment','footer-crypto':'Crypto Guide','footer-contact':'Contact',
+'modal-title':'Payment','payment-note':'⚠️ After sending funds, send Transaction ID (TXID) via Telegram bot','btn-confirm':'Confirm Payment'
+},
+ar:{
+home:'الرئيسية',products:'الملفات',how:'طريقة الشراء',support:'الدعم',
+badge:'أكثر من 5000 ملف فلاش نشط','hero-title-1':'ملفات فلاش','hero-title-2':'احترافية',
+'hero-subtitle':'أكبر مصدر لملفات القراءة والفلاش لهواتف آيفون المقلدة والصينية
+مع دعم CM2 والدفع التلقائي بالعملات المشفرة',
+'stat-files':'ملفات نشطة','stat-users':'عميل راضٍ','stat-success':'%نجاح',
+'btn-buy':'عرض الملفات','btn-support':'دعم تلجرام',
+'features-tag':'لماذا نحن؟','features-title':'مميزات فريدة','features-desc':'كل ما تحتاجه للإصلاحات الاحترافية في مكان واحد',
+'feat-1-title':'ملفات CM2 Read','feat-1-desc':'جميع الملفات المقروءة بـ Infinity CM2 مع اختبار 100٪ وبدون مشاكل الإقلاع',
+'feat-2-title':'تنزيل فوري','feat-2-desc':'يتم إرسال رابط التنزيل تلقائياً فور تأكيد الدفع',
+'feat-3-title':'دفع آمن بالعملات المشفرة','feat-3-desc':'الدفع بـ USDT على شبكات BEP20 و TRC20 مع التحقق التلقائي من المعاملات',
+'feat-4-title':'بوت تلجرام ذكي','feat-4-desc':'دعم على مدار الساعة مع بوت تلجرام للرد التلقائي وإرسال الملفات',
+'feat-5-title':'ثلاث لغات','feat-5-desc':'دعم اللغة الفارسية والإنجليزية والعربية للعملاء الدوليين',
+'feat-6-title':'آيفون مقلد','feat-6-desc':'متخصصون في ملفات الفلاش والاستعادة لهواتف آيفون المقلدة والعلامات التجارية الصينية',
+'products-tag':'المتجر','products-title':'الملفات المتاحة','products-desc':'اختر، ادفع، حمل فوراً',
+'steps-tag':'الدليل','steps-title':'طريقة الشراء','steps-desc':'أربع خطوات بسيطة للحصول على ملفك',
+'step-1-title':'اختر الملف','step-1-desc':'اعثر على طراز هاتفك الدقيق من بين مئات ملفات الفلاش',
+'step-2-title':'الدفع بالعملات المشفرة','step-2-desc':'ادفع بـ USDT على شبكة BEP20 أو TRC20',
+'step-3-title':'التحقق التلقائي','step-3-desc':'النظام يتحقق تلقائياً من معاملتك',
+'step-4-title':'تنزيل فوري','step-4-desc':'احصل على رابط التنزيل المباشر ودليل التثبيت',
+'telegram-title':'بوت تلجرام ذكي',
+'telegram-desc':'جرب أسهل طريقة لشراء وتنزيل الملفات مع بوت تلجرام الخاص بنا. دعم على مدار الساعة، الرد التلقائي وإرسال روابط التنزيل المباشرة.',
+'tg-feat-1':'الرد التلقائي على الأسئلة الشائعة','tg-feat-2':'إرسال رابط التنزيل تلقائياً بعد الدفع','tg-feat-3':'البحث عن الملفات حسب طراز المعالج','tg-feat-4':'الاتصال المباشر بالدعم البشري',
+'tg-btn':'ابدأ الدردشة مع البوت',
+'seo-1-title':'ملف فلاش آيفون مقلد - CM2 Read File',
+'seo-1-text':'أفضل مصدر لتنزيل ملفات الفلاش والقراءة لهواتف آيفون المقلدة والصينية. جميع الملفات مقروءة ومختبرة بـ Infinity CM2. دعم الدفع بـ USDT BEP20 و TRC20. تنزيل فوري بعد تأكيد الدفع. ملفات فلاش MT6580، MT6739، MT6761، MT6765 ومعالجات MediaTek الأخرى.',
+'seo-2-title':'كيفية عمل فلاش لهاتف آيفون مقلد',
+'seo-2-text':'دليل كامل لفلاش هواتف آيفون المقلدة باستخدام CM2. أولاً اشترِ ملف القراءة المناسب لطراز المعالج الخاص بك. ثم قم بفلاش الملف باستخدام Infinity CM2 أو SP Flash Tool. جميع الملفات تشمل scatter file و preloader وملفات النظام الكاملة. دعم على مدار الساعة عبر بوت تلجرام.',
+'footer-desc':'أكبر مصدر لملفات الفلاش والاستعادة لهواتف آيفون المقلدة والصينية. نخدم فنيي الإصلاح الاحترافيين بفخر منذ عام 2020.',
+'footer-links':'روابط سريعة','footer-files':'الملفات','footer-how':'طريقة الشراء','footer-support':'الدعم',
+'footer-payment':'الدفع','footer-crypto':'دليل العملات المشفرة','footer-contact':'اتصل بنا',
+'modal-title':'الدفع','payment-note':'⚠️ بعد إرسال الأموال، أرسل معرف المعاملة (TXID) عبر بوت تلجرام','btn-confirm':'تأكيد الدفع'
+}
+};
+
+let currentLang='fa',currentProduct=null,selectedPayment=null;
+
+function renderProducts(){
+const grid=document.getElementById('products-grid');
+grid.innerHTML=products.map(p=>`
+<div class="product-card fade-in">
+<div class="product-image">
+<div class="product-image-inner">${p.icon}</div>
+<span class="product-badge badge-${p.badge}">${p.badgeText}</span>
+</div>
+<div class="product-info">
+<div class="product-category">${p.category}</div>
+<h3 class="product-name">${p.name}</h3>
+<div class="product-specs">
+<span class="spec-tag">CPU: ${p.cpu}</span>
+<span class="spec-tag">RAM: ${p.ram}</span>
+<span class="spec-tag">ROM: ${p.rom}</span>
+<span class="spec-tag">📦 ${p.size}</span>
+</div>
+<div class="product-footer">
+<div class="product-price">
+<span class="price-old">${p.oldPrice} USDT</span>
+<span class="price-new">${p.price} USDT</span>
+</div>
+<button class="btn-buy" onclick="openPayment(${p.id})">خرید</button>
+</div>
+</div>
+</div>
+`).join('');
+setTimeout(()=>document.querySelectorAll('.fade-in').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight+100)el.classList.add('visible')}),100);
+}
+
+function openPayment(id){
+currentProduct=products.find(p=>p.id===id);
+if(!currentProduct)return;
+document.getElementById('modal-product-name').textContent=currentProduct.name;
+document.getElementById('modal-product-price').textContent=currentProduct.price+' USDT';
+document.getElementById('payment-modal').classList.add('active');
+selectedPayment=null;
+document.querySelectorAll('.payment-option').forEach(o=>o.classList.remove('selected'));
+document.querySelectorAll('.qr-section').forEach(q=>q.classList.remove('active'));
+document.getElementById('btn-confirm').disabled=true;
+}
+
+function closeModal(){document.getElementById('payment-modal').classList.remove('active');}
+
+function selectPayment(type){
+selectedPayment=type;
+document.querySelectorAll('.payment-option').forEach(o=>o.classList.remove('selected'));
+event.currentTarget.classList.add('selected');
+document.querySelectorAll('.qr-section').forEach(q=>q.classList.remove('active'));
+document.getElementById('qr-'+type).classList.add('active');
+if(!document.getElementById('qrcode-'+type).hasChildNodes()){
+new QRCode(document.getElementById('qrcode-'+type),{
+text:document.getElementById('wallet-'+type).textContent,
+width:180,height:180,colorDark:'#00d4ff',colorLight:'transparent',correctLevel:QRCode.CorrectLevel.H
+});
+}
+document.getElementById('btn-confirm').disabled=false;
+}
+
+function copyAddress(id,btn){
+const text=document.getElementById(id).textContent;
+navigator.clipboard.writeText(text).then(()=>{
+btn.textContent='✓ کپی شد';
+btn.classList.add('copied');
+setTimeout(()=>{btn.textContent='کپی';btn.classList.remove('copied');},2000);
+});
+}
+
+function confirmPayment(){
+if(!selectedPayment||!currentProduct)return;
+showToast('✅ لینک دانلود به زودی از طریق ربات تلگرام ارسال می‌شود','success');
+closeModal();
+}
+
+function showToast(msg,type='success'){
+const toast=document.getElementById('toast');
+toast.querySelector('.toast-message').textContent=msg;
+toast.className='toast show '+type;
+setTimeout(()=>toast.classList.remove('show'),4000);
+}
+
+function setLang(lang){
+currentLang=lang;
+document.documentElement.lang=lang;
+document.documentElement.dir=lang==='en'?'ltr':'rtl';
+document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+document.querySelectorAll('[data-lang]').forEach(el=>{
+const key=el.dataset.lang;
+if(translations[lang]&&translations[lang][key]){
+if(el.tagName==='INPUT')el.placeholder=translations[lang][key];
+else el.textContent=translations[lang][key];
+}
+});
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn=>{
+btn.addEventListener('click',()=>setLang(btn.dataset.lang));
+});
+
+function animateCounter(id,target,duration=2000){
+const el=document.getElementById(id);
+let start=0,increment=target/(duration/16);
+function update(){
+start+=increment;
+if(start<target){el.textContent=Math.floor(start);requestAnimationFrame(update);}
+else{el.textContent=target;}
+}
+update();
+}
+
+particlesJS('particles-js',{
+particles:{number:{value:80,density:{enable:true,value_area:800}},color:{value:'#00d4ff'},shape:{type:'circle'},opacity:{value:.5,random:true},size:{value:3,random:true},line_linked:{enable:true,distance:150,color:'#00d4ff',opacity:.2,width:1},move:{enable:true,speed:2,direction:'none',random:true,straight:false,out_mode:'out'}},
+interactivity:{detect_on:'canvas',events:{onhover:{enable:true,mode:'grab'},onclick:{enable:true,mode:'push'}},modes:{grab:{distance:140,line_linked:{opacity:.5}},push:{particles_nb:4}}}
+});
+
+function initThreeJS(){
+const canvas=document.getElementById('three-canvas');
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,.1,1000);
+const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+const phoneGroup=new THREE.Group();
+const bodyGeo=new THREE.BoxGeometry(1.8,3.6,.2);
+const bodyMat=new THREE.MeshStandardMaterial({color:0x1a1a2e,metalness:.8,roughness:.2});
+const body=new THREE.Mesh(bodyGeo,bodyMat);
+phoneGroup.add(body);
+const screenGeo=new THREE.BoxGeometry(1.6,3.3,.01);
+const screenMat=new THREE.MeshStandardMaterial({color:0x000000,emissive:0x00d4ff,emissiveIntensity:.3,metalness:.9,roughness:.1});
+const screen=new THREE.Mesh(screenGeo,screenMat);
+screen.position.z=.11;
+phoneGroup.add(screen);
+const edgeGeo=new THREE.BoxGeometry(1.85,3.65,.05);
+const edgeMat=new THREE.MeshStandardMaterial({color:0x00d4ff,metalness:1,roughness:.1,transparent:true,opacity:.3});
+const edge=new THREE.Mesh(edgeGeo,edgeMat);
+edge.position.z=.05;
+phoneGroup.add(edge);
+scene.add(phoneGroup);
+const ambientLight=new THREE.AmbientLight(0xffffff,.5);
+scene.add(ambientLight);
+const pointLight=new THREE.PointLight(0x00d4ff,2,100);
+pointLight.position.set(5,5,5);
+scene.add(pointLight);
+const pointLight2=new THREE.PointLight(0xff006e,1,100);
+pointLight2.position.set(-5,-5,5);
+scene.add(pointLight2);
+camera.position.z=6;
+function animate(){
+requestAnimationFrame(animate);
+phoneGroup.rotation.y+=.005;
+phoneGroup.rotation.x=Math.sin(Date.now()*.001)*.1;
+phoneGroup.position.y=Math.sin(Date.now()*.002)*.2;
+renderer.render(scene,camera);
+}
+animate();
+window.addEventListener('resize',()=>{
+camera.aspect=window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth,window.innerHeight);
+});
+}
+
+function initScrollAnimations(){
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible');});
+},{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+}
+
+window.addEventListener('scroll',()=>{
+document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+anchor.addEventListener('click',function(e){
+e.preventDefault();
+document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+});
+});
+
+window.addEventListener('load',()=>{
+setTimeout(()=>{
+document.getElementById('loader').classList.add('hidden');
+initThreeJS();
+initScrollAnimations();
+renderProducts();
+animateCounter('stat-files',5247);
+animateCounter('stat-users',1843);
+animateCounter('stat-success',99);
+},2500);
+});
+
+document.getElementById('payment-modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+</script>
+</body>
+</html>
